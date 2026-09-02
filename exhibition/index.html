@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>恰口科研｜限定優惠訂購單</title>
+<meta name="theme-color" content="#8DC63F">
+<style>
+:root{
+  --green:#8DC63F; --deep:#629626; --gray:#787C80; --ink:#464F4B;
+  --line:#e3e6e2; --bg:#f6f8f4; --card:#fff; --err:#d64545;
+  --gold:#E8A33D; --goldbg:#fff8ec;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  background:var(--bg); color:var(--ink); line-height:1.7; font-size:16px;
+  -webkit-text-size-adjust:100%;
+}
+.wrap{max-width:680px;margin:0 auto;padding:0 0 130px}
+
+/* ── 頁首 ── */
+header{background:#fff;padding:22px 20px 18px;text-align:center;border-bottom:3px solid var(--green)}
+header img.logo{width:60px;height:60px;border-radius:50%;object-fit:contain;display:block;margin:0 auto 10px}
+header .brand{font-size:14px;color:var(--deep);font-weight:700;letter-spacing:.08em}
+header h1{font-size:21px;margin:6px 0 6px;font-weight:800;line-height:1.4}
+header .period{display:inline-block;background:var(--goldbg);border:1px solid #f0d9b0;color:#9a6b16;
+  border-radius:20px;padding:4px 14px;font-size:13.5px;font-weight:700}
+header .limit{margin-top:7px;font-size:13px;font-weight:700;color:#c0392b;letter-spacing:.04em}
+
+/* ── 區塊標題 ── */
+.sec{margin:22px 12px 10px}
+.sec h2{font-size:17px;margin:0 0 3px;font-weight:800;display:flex;align-items:center;gap:8px}
+.sec h2::before{content:"";width:4px;height:18px;background:var(--green);border-radius:2px;flex:none}
+.sec p{margin:0 0 0 12px;font-size:13.5px;color:var(--gray)}
+
+/* ── 產品介紹 ── */
+.prods{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:0 12px}
+.prod{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 8px;text-align:center}
+.prod img{width:100%;max-width:92px;height:110px;object-fit:contain;display:block;margin:0 auto 8px}
+.prod .nm{font-size:14px;font-weight:800;line-height:1.4}
+.prod .tag{display:inline-block;font-size:11.5px;font-weight:700;border-radius:12px;padding:1px 9px;margin-top:5px}
+.prod .tag.s{background:#fff2e2;color:#c9741a}
+.prod .tag.m{background:#eef8e0;color:var(--deep)}
+.prod .tag.j{background:#e6f2ea;color:#2f7d55}
+.prod .dsc{font-size:12px;color:var(--gray);margin-top:6px;line-height:1.6}
+.badges{margin:12px 12px 0;background:#fff;border:1px solid var(--line);border-radius:12px;
+  padding:10px 12px;font-size:13px;color:var(--gray);text-align:center;line-height:1.9}
+.badges b{color:var(--deep)}
+
+/* ── 組合卡 ── */
+.grp{margin:16px 12px 0}
+.grp>.gt{font-size:14px;font-weight:800;color:var(--deep);margin:0 0 8px;padding-left:2px}
+.grp>.gt span{font-weight:400;color:var(--gray);font-size:12.5px;margin-left:6px}
+
+.plan{background:#fff;border:1.5px solid var(--line);border-radius:16px;margin-bottom:12px;overflow:hidden;
+  transition:border-color .15s,box-shadow .15s}
+.plan.on{border-color:var(--green);box-shadow:0 0 0 3px rgba(141,198,63,.14)}
+.plan .hd{display:flex;align-items:center;gap:10px;padding:11px 14px;background:#fafbf8;border-bottom:1px solid var(--line)}
+.plan .no{background:var(--deep);color:#fff;font-size:13px;font-weight:800;border-radius:8px;padding:2px 10px;flex:none}
+.plan.on .no{background:var(--green)}
+.plan .disc{margin-left:auto;font-size:13px;font-weight:800;color:#c0392b;background:#fdeeec;
+  border-radius:14px;padding:2px 11px;flex:none}
+.plan .disc.gift{color:#9a6b16;background:var(--goldbg)}
+
+.body{display:flex;gap:12px;padding:13px 14px 0}
+.pics{display:flex;gap:5px;flex:none}
+.pics img{width:50px;height:74px;object-fit:contain;background:#fbfcfa;border-radius:8px}
+.items{flex:1;min-width:0}
+.item{display:flex;align-items:baseline;gap:6px;font-size:14.5px;padding:2px 0}
+.item .n{flex:1;min-width:0}
+.item .q{color:var(--deep);font-weight:800;flex:none}
+.item .p{color:var(--gray);font-size:13px;flex:none;font-variant-numeric:tabular-nums;min-width:64px;text-align:right}
+
+.money{display:flex;align-items:flex-end;gap:10px;padding:10px 14px 12px;flex-wrap:wrap}
+.money .was{font-size:13.5px;color:#a8ada6;text-decoration:line-through;font-variant-numeric:tabular-nums}
+.money .now{font-size:25px;font-weight:900;color:#c0392b;line-height:1;font-variant-numeric:tabular-nums}
+.money .save{font-size:12.5px;font-weight:700;color:#c0392b;background:#fdeeec;border-radius:12px;padding:2px 9px}
+
+.gifts{margin:0 14px 12px;background:var(--goldbg);border:1px dashed #ecd3a4;border-radius:11px;padding:9px 12px}
+.gifts .gl{font-size:12px;font-weight:800;color:#9a6b16;letter-spacing:.05em;margin-bottom:3px}
+.gifts ul{margin:0;padding-left:17px}
+.gifts li{font-size:13.5px;color:#7a5c17;line-height:1.75}
+
+/* 數量 */
+.qty{display:flex;align-items:center;gap:12px;padding:11px 14px;border-top:1px solid var(--line);background:#fafbf8}
+.qty .lb{font-size:14px;font-weight:700;flex:1}
+.qty .ctl{display:flex;align-items:center;gap:0;border:1.5px solid var(--line);border-radius:10px;overflow:hidden;background:#fff}
+.qty button{width:42px;height:42px;border:none;background:#fff;font-size:22px;color:var(--deep);
+  font-family:inherit;cursor:pointer;line-height:1}
+.qty button:active{background:#eef7e2}
+.qty button:disabled{color:#cfd5cc;cursor:default}
+.qty input{width:52px;height:42px;border:none;border-left:1.5px solid var(--line);border-right:1.5px solid var(--line);
+  text-align:center;font-size:17px;font-weight:800;font-family:inherit;color:var(--ink);appearance:none;-moz-appearance:textfield}
+.qty input::-webkit-outer-spin-button,.qty input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+
+/* ── 訂購人資料 ── */
+.form{background:#fff;border:1px solid var(--line);border-radius:16px;margin:0 12px;padding:16px 14px}
+.field{margin-bottom:14px}
+.field:last-child{margin-bottom:0}
+.field label{display:block;font-size:14px;font-weight:700;margin-bottom:6px}
+.field label .req{color:var(--err);margin-left:3px}
+.field label .opt-tag{font-weight:400;color:var(--gray);font-size:12.5px;margin-left:5px}
+input[type=text],input[type=tel],select,textarea{
+  width:100%;padding:12px 13px;border:1.5px solid var(--line);border-radius:10px;
+  font-size:16px;font-family:inherit;color:var(--ink);background:#fff;appearance:none}
+textarea{min-height:74px;resize:vertical;line-height:1.6}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--green)}
+.field.invalid input,.field.invalid textarea{border-color:var(--err);background:#fffafa}
+.field .err{display:none;font-size:12.5px;color:var(--err);margin-top:5px;font-weight:600}
+.field.invalid .err{display:block}
+.row2{display:flex;gap:10px}
+.row2>*{flex:1;min-width:0}
+select{background-image:url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23787C80' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
+
+/* ── 小計摘要 ── */
+.summary{background:#fff;border:1px solid var(--line);border-radius:16px;margin:14px 12px 0;padding:14px}
+.summary .line{display:flex;justify-content:space-between;font-size:14.5px;padding:3px 0}
+.summary .line .v{font-variant-numeric:tabular-nums}
+.summary .tot{border-top:2px solid var(--line);margin-top:9px;padding-top:10px;font-size:16px;font-weight:800}
+.summary .tot .v{font-size:24px;color:#c0392b;font-weight:900}
+.summary .giftlist{margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);font-size:13.5px;color:#7a5c17}
+.summary .giftlist b{color:#9a6b16}
+.summary .empty{text-align:center;color:var(--gray);font-size:14px;padding:8px 0}
+
+.notes{margin:14px 12px 0;background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px;
+  font-size:13.5px;color:var(--gray);line-height:1.85}
+.notes b{color:var(--ink)}
+.notes ul{margin:6px 0 0;padding-left:19px}
+
+/* ── 送出列 ── */
+.bottom{position:fixed;left:0;right:0;bottom:0;background:rgba(255,255,255,.97);
+  backdrop-filter:blur(8px);border-top:1px solid var(--line);
+  padding:10px 12px calc(10px + env(safe-area-inset-bottom));z-index:30}
+.bottom .inner{max-width:656px;margin:0 auto;display:flex;align-items:center;gap:12px}
+.bottom .amt{flex:1;min-width:0}
+.bottom .amt .k{font-size:11.5px;color:var(--gray);line-height:1.3}
+.bottom .amt .v{font-size:22px;font-weight:900;color:#c0392b;line-height:1.2;font-variant-numeric:tabular-nums}
+button.go{flex:none;padding:14px 26px;border:none;border-radius:12px;background:var(--green);color:#fff;
+  font-size:17px;font-weight:800;font-family:inherit;cursor:pointer;letter-spacing:.05em}
+button.go:active{background:var(--deep)}
+button.go:disabled{background:#c6cec1;cursor:default}
+
+/* ── 完成頁 ── */
+#done{display:none;position:fixed;inset:0;background:#fff;z-index:100;overflow-y:auto;
+  padding:calc(40px + env(safe-area-inset-top)) 22px calc(40px + env(safe-area-inset-bottom));text-align:center}
+#done.show{display:block}
+.tick{width:92px;height:92px;border-radius:50%;background:var(--green);margin:10px auto 20px;
+  display:flex;align-items:center;justify-content:center;animation:pop .45s cubic-bezier(.2,1.4,.4,1)}
+@keyframes pop{0%{transform:scale(.2);opacity:0}100%{transform:scale(1);opacity:1}}
+.tick svg{width:48px;height:48px}
+#done h2{font-size:28px;margin:0 0 6px;color:var(--deep);font-weight:900;letter-spacing:.06em}
+#done .sub{font-size:15px;color:var(--gray);margin:0 0 24px;line-height:1.8}
+.serial{border:3px solid var(--green);border-radius:16px;padding:18px 16px;max-width:340px;margin:0 auto 20px;background:#f4faec}
+.serial .lb{font-size:12.5px;color:var(--deep);font-weight:700;letter-spacing:.16em;margin-bottom:4px}
+.serial .num{font-size:34px;font-weight:900;letter-spacing:.05em;line-height:1.15;font-variant-numeric:tabular-nums}
+.serial .tm{font-size:12.5px;color:var(--gray);margin-top:7px}
+.dnote{max-width:380px;margin:0 auto;background:#fffbea;border:1px solid #f0e2ae;border-radius:12px;
+  padding:14px;font-size:14px;line-height:1.85;color:#7a6a2f;text-align:left}
+.dnote b{color:var(--deep)}
+.offline-tag{display:inline-block;background:#fff2f2;color:var(--err);border:1px solid #f3c9c9;
+  border-radius:20px;padding:3px 12px;font-size:12.5px;font-weight:700;margin-bottom:12px}
+.contact{margin:26px auto 0;max-width:380px;font-size:13.5px;color:var(--gray);line-height:2}
+.contact a{color:var(--deep);text-decoration:none;font-weight:700}
+
+/* 頁尾 */
+footer{margin:26px 12px 0;text-align:center;font-size:12.5px;color:var(--gray);line-height:2}
+footer a{color:var(--deep);text-decoration:none}
+
+/* 列印按鈕（螢幕用） */
+.printbtn{display:block;margin:16px auto 0;background:#fff;border:1.5px solid var(--line);color:var(--gray);
+  border-radius:10px;padding:9px 18px;font-size:13.5px;font-family:inherit;cursor:pointer}
+
+/* ══════════════ 列印版：A4 訂購單 ══════════════ */
+.print-only{display:none}
+@media print{
+  @page{size:A4 portrait;margin:10mm 11mm}
+  html,body{background:#fff!important;font-size:10pt;line-height:1.45}
+  .screen-only{display:none!important}
+  .print-only{display:block}
+  .wrap{max-width:none;padding:0}
+  a{text-decoration:none;color:#000}
+
+  .p-head{display:flex;align-items:center;gap:14px;border-bottom:2.5pt solid #8DC63F;padding-bottom:6px;margin-bottom:8px}
+  .p-head img{width:42px;height:42px;object-fit:contain;flex:none}
+  .p-head .t{flex:1}
+  .p-head .brand{font-size:9pt;color:#629626;font-weight:700;letter-spacing:.08em}
+  .p-head h1{font-size:16pt;margin:1px 0 2px;font-weight:800}
+  .p-head .period{font-size:9pt;color:#333}
+  .p-head .limit{font-size:8.5pt;color:#c0392b;font-weight:700;margin-top:1px}
+  .p-head .qr{text-align:right;font-size:8pt;color:#555;line-height:1.4;flex:none;max-width:52mm}
+  .p-head .qr b{color:#629626}
+
+  .p-prod{display:flex;gap:6px;margin-bottom:8px}
+  .p-prod .c{flex:1;border:.7pt solid #cfd5cc;border-radius:4px;padding:4px 5px;display:flex;gap:6px;align-items:center}
+  .p-prod img{width:26px;height:34px;object-fit:contain;flex:none}
+  .p-prod .n{font-size:8.5pt;font-weight:700;line-height:1.35}
+  .p-prod .d{font-size:7.5pt;color:#555;line-height:1.3}
+
+  table.p-tb{width:100%;border-collapse:collapse;margin-bottom:7px}
+  table.p-tb th,table.p-tb td{border:.7pt solid #9aa39b;padding:3.5px 5px;font-size:8.8pt;vertical-align:middle}
+  table.p-tb th{background:#e9f2dc;font-weight:700;text-align:center;font-size:8.5pt}
+  table.p-tb td.c{text-align:center}
+  table.p-tb td.r{text-align:right;font-variant-numeric:tabular-nums}
+  table.p-tb td.p-no{text-align:center;font-weight:800;background:#f6f8f4;white-space:nowrap}
+  table.p-tb td.p-item{font-size:8.5pt;line-height:1.5}
+  table.p-tb td.p-now{text-align:right;font-weight:800;font-size:10pt}
+  table.p-tb td.p-was{text-align:right;color:#666;text-decoration:line-through;font-size:8pt}
+  table.p-tb td.p-gift{font-size:8pt;line-height:1.5}
+  table.p-tb td.p-gift span,table.p-tb td.p-item span{white-space:nowrap;display:inline-block}
+  table.p-tb td.p-fill{background:#fffdf2}
+
+  .p-sec{font-size:9.5pt;font-weight:800;border-left:3pt solid #8DC63F;padding-left:5px;margin:8px 0 4px}
+  table.p-form{width:100%;border-collapse:collapse}
+  table.p-form th,table.p-form td{border:.7pt solid #9aa39b;padding:6px 6px;font-size:9pt}
+  table.p-form th{background:#f2f5ef;font-weight:700;text-align:left;white-space:nowrap;width:24mm}
+  table.p-form td{height:9mm}
+
+  .p-note{border:.7pt solid #cfd5cc;border-radius:4px;padding:5px 7px;margin-top:7px;font-size:8pt;
+    color:#333;line-height:1.6}
+  .p-note b{color:#629626}
+  .p-note ol{margin:2px 0 0;padding-left:14px}
+  .p-foot{margin-top:7px;text-align:center;font-size:8pt;color:#444;border-top:.7pt solid #cfd5cc;padding-top:5px}
+  .p-foot b{color:#629626}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<!-- ═════════════ 螢幕版：線上訂購 ═════════════ -->
+<div class="screen-only">
+
+  <header>
+    <img class="logo" src="../logo.png" alt="恰口科研" onerror="this.style.display='none'">
+    <div class="brand">恰口科研 CHARCO</div>
+    <h1 id="h_title">限定優惠組合訂購單</h1>
+    <div class="period" id="h_period"></div>
+    <div class="limit" id="h_limit"></div>
+  </header>
+
+  <div class="sec"><h2>產品介紹</h2><p>現場方案採用常溫版，不必冷藏，收到就能放。</p></div>
+  <div class="prods">
+    <div class="prod">
+      <img src="../images/p_1l_strong.jpg" alt="碳晶讚 常溫強效">
+      <div class="nm">碳晶讚</div>
+      <div class="tag s">常溫強效</div>
+      <div class="dsc">田間種植的強力守護者<br>植保製字第00600號</div>
+    </div>
+    <div class="prod">
+      <img src="../images/p_1l_mild.jpg" alt="碳晶讚 常溫溫和">
+      <div class="nm">碳晶讚</div>
+      <div class="tag m">常溫溫和</div>
+      <div class="dsc">田間種植的強力守護者<br>植保製字第00600號</div>
+    </div>
+    <div class="prod">
+      <img src="../images/p_4l_jia.jpg" alt="甲晶讚 常溫強效 4L">
+      <div class="nm">甲晶讚 常溫強效</div>
+      <div class="tag j">贈品專用</div>
+      <div class="dsc">有效預防病蟲害<br>植保製字第00675號</div>
+    </div>
+  </div>
+  <div class="badges">
+    <b>專利技術</b>　|　<b>無抗藥性</b>　|　<b>安全環保</b>　|　<b>常溫保存</b><br>
+    適用作物：木瓜、芒果、草莓、芭樂等
+  </div>
+
+  <div class="sec"><h2>選擇訂購方案</h2><p>每個產品有兩種數量，買越多優惠越好，可以同時選多個方案。</p></div>
+  <div id="plans"></div>
+
+  <div class="sec"><h2>訂購明細</h2></div>
+  <div class="summary" id="summary"></div>
+
+  <div class="sec"><h2>訂購人資料</h2><p>標示 <span style="color:#d64545">*</span> 為必填</p></div>
+  <div class="form">
+    <div class="field" id="f_name">
+      <label>姓名<span class="req">*</span></label>
+      <input type="text" id="i_name" placeholder="請填收貨人姓名" autocomplete="name">
+      <div class="err">請填寫姓名</div>
+    </div>
+    <div class="field" id="f_phone">
+      <label>手機<span class="req">*</span></label>
+      <input type="tel" id="i_phone" placeholder="09xxxxxxxx" inputmode="numeric" autocomplete="tel">
+      <div class="err">請填寫正確的手機號碼</div>
+    </div>
+    <div class="field" id="f_addr">
+      <label>送貨地址<span class="req">*</span></label>
+      <input type="text" id="i_addr" placeholder="請填完整地址（含縣市、郵遞區號）" autocomplete="street-address">
+      <div class="err">請填寫送貨地址</div>
+    </div>
+    <div class="field">
+      <label>公司／農場名稱<span class="opt-tag">選填</span></label>
+      <input type="text" id="i_org" placeholder="要開發票抬頭請填寫">
+    </div>
+    <div class="field" id="f_tax">
+      <label>統一編號<span class="opt-tag">選填，8 碼</span></label>
+      <input type="tel" id="i_tax" placeholder="需要三聯式發票再填" inputmode="numeric" maxlength="8">
+      <div class="err">統一編號要 8 位數字</div>
+    </div>
+    <div class="row2">
+      <div class="field">
+        <label>LINE ID<span class="opt-tag">選填</span></label>
+        <input type="text" id="i_line" placeholder="方便業務聯繫">
+      </div>
+      <div class="field">
+        <label>方便聯絡時間<span class="opt-tag">選填</span></label>
+        <select id="i_when">
+          <option value="">都可以</option>
+          <option>上午 09-12</option>
+          <option>下午 12-17</option>
+          <option>傍晚 17-20</option>
+        </select>
+      </div>
+    </div>
+    <div class="field">
+      <label>備註<span class="opt-tag">選填</span></label>
+      <textarea id="i_memo" placeholder="指定到貨時間、發票需求、其他需要我們知道的事"></textarea>
+    </div>
+  </div>
+
+  <div class="notes" id="s_notes"></div>
+
+  <button class="printbtn" onclick="window.print()">列印這份訂購單（A4）</button>
+
+  <footer>
+    恰口科研企業股份有限公司<br>
+    LINE @852juwpf<br>
+    <a href="mailto:charcote2018@gmail.com">charcote2018@gmail.com</a>　|　<a href="https://www.charcotek.com/">charcotek.com</a>
+  </footer>
+
+  <div class="bottom">
+    <div class="inner">
+      <div class="amt">
+        <div class="k" id="b_k">尚未選擇組合</div>
+        <div class="v" id="b_v">NT$0</div>
+      </div>
+      <button class="go" id="btn">送出訂單</button>
+    </div>
+  </div>
+
+  <div id="done">
+    <div class="tick"><svg viewBox="0 0 52 52"><path d="M14 27l9 9 16-18" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <span class="offline-tag" id="off_tag" style="display:none">網路不穩，已先存在手機裡</span>
+    <h2>訂單已送出</h2>
+    <p class="sub">謝謝您的訂購，我們會盡快與您聯繫確認</p>
+    <div class="serial">
+      <div class="lb">訂單編號</div>
+      <div class="num" id="serial">—</div>
+      <div class="tm" id="stamp"></div>
+    </div>
+    <div class="dnote" id="d_note"></div>
+    <div class="contact">
+      有問題請聯絡我們<br>
+      LINE @852juwpf<br>
+      <a href="mailto:charcote2018@gmail.com">charcote2018@gmail.com</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═════════════ 列印版：A4 紙本訂購單 ═════════════ -->
+<div class="print-only">
+  <div class="p-head">
+    <img src="../logo.png" alt="">
+    <div class="t">
+      <div class="brand">恰口科研 CHARCO</div>
+      <h1 id="p_title">限定優惠組合訂購單</h1>
+      <div class="period" id="p_period"></div>
+      <div class="limit" id="p_limit"></div>
+    </div>
+    <div class="qr">
+      也可以線上下單<br><b id="p_url"></b>
+    </div>
+  </div>
+
+  <div class="p-prod">
+    <div class="c"><img src="../images/p_1l_strong.jpg" alt="">
+      <div><div class="n">碳晶讚 常溫強效</div><div class="d">植保製字第00600號</div></div></div>
+    <div class="c"><img src="../images/p_1l_mild.jpg" alt="">
+      <div><div class="n">碳晶讚 常溫溫和</div><div class="d">植保製字第00600號</div></div></div>
+    <div class="c"><img src="../images/p_4l_jia.jpg" alt="">
+      <div><div class="n">甲晶讚 常溫強效 4L（贈品）</div><div class="d">植保製字第00675號</div></div></div>
+  </div>
+
+  <table class="p-tb">
+    <thead>
+      <tr>
+        <th style="width:13mm">方案</th>
+        <th>產品別</th>
+        <th style="width:16mm">單瓶<br>售價</th>
+        <th style="width:15mm">訂購<br>數量</th>
+        <th style="width:19mm">原價</th>
+        <th style="width:21mm">優惠價</th>
+        <th style="width:38mm">加贈</th>
+        <th style="width:15mm">訂購<br>組數</th>
+      </tr>
+    </thead>
+    <tbody id="p_rows"></tbody>
+  </table>
+
+  <div class="p-sec">訂購人資料</div>
+  <table class="p-form">
+    <tr><th>姓　　名</th><td></td><th>手　　機</th><td></td></tr>
+    <tr><th>公司／農場</th><td></td><th>統一編號</th><td></td></tr>
+    <tr><th>送貨地址</th><td colspan="3"></td></tr>
+    <tr><th>LINE ID</th><td></td><th>方便聯絡時間</th><td></td></tr>
+    <tr><th>備　　註</th><td colspan="3"></td></tr>
+    <tr><th>訂購金額合計</th><td colspan="3">NT$__________ 元（未稅／含稅由業務確認；滿 NT$15,000 免運費）</td></tr>
+  </table>
+
+  <div class="p-note" id="p_note"></div>
+  <div class="p-foot">
+    <b>恰口科研企業股份有限公司</b>　LINE @852juwpf<br>
+    charcote2018@gmail.com　|　www.charcotek.com
+  </div>
+</div>
+
+</div>
+
+<script>
+/* ═══════════════════════════════════════════════════════════
+   設定區：要改的東西都在這裡
+   ═══════════════════════════════════════════════════════════ */
+
+// ① Google Apps Script 網址（部署後貼進來，見 README.md）
+const GAS_URL = "";
+
+// ② 活動基本資料 ── ⚠️ 下面三行請鈴鈴確認後改掉
+const CFG = {
+  title  : "參展現場訂購方案",
+  period : "優惠期間：2026/09/08 - 09/10 展覽現場限定",   // 展期
+  limit  : "現場限定，數量有限售完為止",
+  online : "linlinchloe.github.io/charco-order/exhibition/",
+  event  : "2026 參展現場訂購方案",
+  notes  : [
+    "本方案為展覽現場限定，數量有限、售完為止；贈品依實際訂購組數計算，贈完為止。",
+    "訂購金額滿 NT$15,000 免運費，未達者運費另計。",
+    "下訂後請於 3 日內完成付款，並依訂貨次序安排出貨。",
+    "以上價格為新台幣，是否含稅由業務與您確認後回覆。",
+    "送出訂單後，我們會在 1-2 個工作天內與您聯繫確認明細與付款方式。",
+    "產品皆為常溫保存，收到後請置於陰涼處，避免陽光直射。",
+    "如遇原物料調整或不可抗力因素，本公司得變更或提前結束本活動；恰口科研企業股份有限公司保留活動內容變更、修改與最終解釋之權利。"
+  ]
+};
+
+// ③ 產品單價（要調價改這裡，組合的原價會自動重算）
+const PRICE = {
+  s1:1100, s4:3900,   // 碳晶讚 常溫強效 1L / 4L
+  m1: 700, m4:2500    // 碳晶讚 常溫溫和 1L / 4L
+};
+
+// ④ 六個優惠組合
+//    items：組合內容　gifts：贈品　deal：優惠價（不填就等於原價）
+const PLANS = [
+  { no:"A1", grp:"碳晶讚 常溫強效 1L", img:"p_1l_strong",
+    items:[["碳晶讚 常溫強效 1L", 6, PRICE.s1]], deal:6270,
+    gifts:[["碳晶讚 常溫強效 1L",1]] },
+
+  { no:"A2", grp:"碳晶讚 常溫強效 1L", img:"p_1l_strong",
+    items:[["碳晶讚 常溫強效 1L",12, PRICE.s1]], deal:11880,
+    gifts:[["碳晶讚 常溫強效 1L",1],["甲晶讚 常溫強效 4L",1]] },
+
+  { no:"B1", grp:"碳晶讚 常溫強效 4L", img:"p_4l_strong",
+    items:[["碳晶讚 常溫強效 4L", 4, PRICE.s4]], deal:14040,
+    gifts:[["碳晶讚 常溫強效 1L",2]] },
+
+  { no:"B2", grp:"碳晶讚 常溫強效 4L", img:"p_4l_strong",
+    items:[["碳晶讚 常溫強效 4L", 8, PRICE.s4]], deal:26520,
+    gifts:[["碳晶讚 常溫強效 1L",2],["甲晶讚 常溫強效 4L",1]] },
+
+  { no:"C1", grp:"碳晶讚 常溫溫和 1L", img:"p_1l_mild",
+    items:[["碳晶讚 常溫溫和 1L", 6, PRICE.m1]], deal:3990,
+    gifts:[["碳晶讚 常溫溫和 1L",1]] },
+
+  { no:"C2", grp:"碳晶讚 常溫溫和 1L", img:"p_1l_mild",
+    items:[["碳晶讚 常溫溫和 1L",12, PRICE.m1]], deal:7980,
+    gifts:[["碳晶讚 常溫溫和 1L",2]] },
+
+  { no:"D1", grp:"碳晶讚 常溫溫和 4L", img:"p_4l_mild",
+    items:[["碳晶讚 常溫溫和 4L", 4, PRICE.m4]], deal:9500,
+    gifts:[["碳晶讚 常溫溫和 1L",1],["甲晶讚 常溫強效 4L",1]] },
+
+  { no:"D2", grp:"碳晶讚 常溫溫和 4L", img:"p_4l_mild",
+    items:[["碳晶讚 常溫溫和 4L", 8, PRICE.m4]], deal:18000,
+    gifts:[["碳晶讚 常溫溫和 1L",1],["甲晶讚 常溫強效 4L",2]] }
+];
+
+
+
+/* ═══════════════ 以下是程式，一般不用動 ═══════════════ */
+
+const $  = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const nt = n => "NT$" + n.toLocaleString("en-US");
+const listPrice = p => p.items.reduce((a,[,q,pr]) => a + q*pr, 0);
+const dealPrice = p => p.deal || listPrice(p);
+const qtyOf     = p => p._qty || 0;
+
+// 折數標籤：9折 / 95折 / 只加贈
+function discLabel(p){
+  const was = listPrice(p), now = dealPrice(p);
+  if (now >= was) return { txt:"加贈好禮", gift:true };
+  const r = Math.round(now / was * 100);
+  const txt = r % 10 === 0 ? (r/10) + " 折" : (r/10).toFixed(1).replace(".","") + " 折";
+  return { txt, gift:false };
+}
+
+/* ── 畫組合卡 ── */
+function renderPlans(){
+  const box = $("#plans");
+  let last = null, wrap = null;
+  PLANS.forEach(p => {
+    if (p.grp !== last){                       // 換產品就開新的一區
+      wrap = document.createElement("div");
+      wrap.className = "grp";
+      wrap.innerHTML = '<div class="gt">' + p.grp + '</div>';
+      box.appendChild(wrap);
+      last = p.grp;
+    }
+    wrap.appendChild(planCard(p));
+  });
+}
+
+function planCard(p){
+  const was = listPrice(p), now = dealPrice(p), save = was - now, d = discLabel(p);
+  const el = document.createElement("div");
+  el.className = "plan";
+  el.dataset.no = p.no;
+  el.innerHTML =
+    '<div class="hd">' +
+      '<span class="no">' + p.no + '</span>' +
+      '<span style="font-size:14.5px;font-weight:700">' + p.items[0][1] + ' 瓶入</span>' +
+      '<span class="disc' + (d.gift ? " gift" : "") + '">' + d.txt + '</span>' +
+    '</div>' +
+    '<div class="body">' +
+      '<div class="pics"><img src="../images/' + p.img + '.jpg" alt=""></div>' +
+      '<div class="items">' +
+        p.items.map(([n,q,pr]) =>
+          '<div class="item"><span class="n">' + n + '</span>' +
+          '<span class="q">×' + q + '</span><span class="p">' + nt(q*pr) + '</span></div>').join("") +
+      '</div>' +
+    '</div>' +
+    '<div class="money">' +
+      (save > 0 ? '<span class="was">' + nt(was) + '</span>' : '') +
+      '<span class="now">' + nt(now) + '</span>' +
+      (save > 0 ? '<span class="save">省 ' + nt(save) + '</span>' : '') +
+    '</div>' +
+    '<div class="gifts"><div class="gl">加贈</div><ul>' +
+      p.gifts.map(([n,q]) => '<li>' + n + ' × ' + q + '</li>').join("") +
+    '</ul></div>' +
+    '<div class="qty">' +
+      '<span class="lb">訂購組數</span>' +
+      '<span class="ctl">' +
+        '<button type="button" data-d="-1">−</button>' +
+        '<input type="number" min="0" max="99" value="0" inputmode="numeric">' +
+        '<button type="button" data-d="1">＋</button>' +
+      '</span>' +
+    '</div>';
+
+  const input = el.querySelector("input");
+  el.querySelectorAll(".qty button").forEach(b =>
+    b.onclick = () => setQty(p, el, qtyOf(p) + Number(b.dataset.d)));
+  input.oninput = () => setQty(p, el, parseInt(input.value, 10) || 0, true);
+  input.onblur  = () => { input.value = qtyOf(p); };
+  return el;
+}
+
+function setQty(p, el, v, typing){
+  p._qty = Math.max(0, Math.min(99, v || 0));
+  if (!typing) el.querySelector("input").value = p._qty;
+  el.classList.toggle("on", p._qty > 0);
+  el.querySelector(".qty button[data-d='-1']").disabled = p._qty === 0;
+  update();
+}
+
+/* ── 明細與總計 ── */
+function chosen(){ return PLANS.filter(p => qtyOf(p) > 0); }
+function total(){ return chosen().reduce((a,p) => a + dealPrice(p) * qtyOf(p), 0); }
+function saved(){ return chosen().reduce((a,p) => a + (listPrice(p) - dealPrice(p)) * qtyOf(p), 0); }
+
+function giftTotals(){
+  const m = new Map();
+  chosen().forEach(p => p.gifts.forEach(([n,q]) => m.set(n, (m.get(n) || 0) + q * qtyOf(p))));
+  return [...m];
+}
+
+function update(){
+  const list = chosen(), sum = total(), sv = saved();
+  const box = $("#summary");
+
+  if (!list.length){
+    box.innerHTML = '<div class="empty">還沒選方案，往上挑一個吧</div>';
+  } else {
+    box.innerHTML =
+      list.map(p =>
+        '<div class="line"><span>' + p.no + '　' + p.items[0][0] + ' × ' + qtyOf(p) + ' 組</span>' +
+        '<span class="v">' + nt(dealPrice(p) * qtyOf(p)) + '</span></div>').join("") +
+      (sv > 0 ? '<div class="line" style="color:#c0392b"><span>優惠折抵</span><span class="v">− ' + nt(sv) + '</span></div>' : '') +
+      '<div class="line tot"><span>訂購總金額</span><span class="v">' + nt(sum) + '</span></div>' +
+      '<div class="giftlist"><b>加贈：</b>' +
+        giftTotals().map(([n,q]) => n + " × " + q).join("、") + '</div>';
+  }
+
+  $("#b_v").textContent = nt(sum);
+  $("#b_k").textContent = list.length
+    ? "共 " + list.reduce((a,p) => a + qtyOf(p), 0) + " 組" + (sv > 0 ? "，已省 " + nt(sv) : "")
+    : "尚未選擇方案";
+}
+
+/* ── 靜態文字 ── */
+function renderStatic(){
+  $("#h_title").textContent = CFG.title;
+  $("#p_title").textContent = CFG.title;
+  $("#h_period").textContent = CFG.period;
+  $("#p_period").textContent = CFG.period;
+  $("#h_limit").textContent = CFG.limit;
+  $("#p_limit").textContent = CFG.limit;
+  $("#p_url").textContent = CFG.online;
+  document.title = "恰口科研｜" + CFG.title;
+
+  $("#s_notes").innerHTML = "<b>訂購說明</b><ul>" + CFG.notes.map(n => "<li>" + n + "</li>").join("") + "</ul>";
+  $("#p_note").innerHTML  = "<b>訂購說明</b><ol>" + CFG.notes.map(n => "<li>" + n + "</li>").join("") + "</ol>";
+  $("#d_note").innerHTML  = "<b>接下來會發生什麼</b><br>" +
+    "我們收到訂單後，會由業務與您聯繫確認品項、金額與付款方式，確認後才會出貨。<br>" +
+    "如果一個工作天內沒有接到聯繫，歡迎用 LINE @852juwpf 或 Email 找我們。";
+
+  // 列印版表格
+  $("#p_rows").innerHTML = PLANS.map(p => {
+      const was = listPrice(p), now = dealPrice(p), d = discLabel(p);
+      return '<tr>' +
+        '<td class="p-no">' + p.no + '</td>' +
+        '<td class="p-item">' + p.items[0][0] + '</td>' +
+        '<td class="r">' + nt(p.items[0][2]) + '</td>' +
+        '<td class="c">' + p.items[0][1] + '</td>' +
+        '<td class="p-was">' + nt(was) + '</td>' +
+        '<td class="p-now">' + nt(now) + '<div style="font-size:7.5pt;font-weight:600;color:#c0392b">' + d.txt + '</div></td>' +
+        '<td class="p-gift">' + p.gifts.map(([n,q]) => '<span>' + n + ' × ' + q + '</span>').join("<br>") + '</td>' +
+        '<td class="p-fill"></td>' +
+      '</tr>';
+    }).join("");
+}
+
+/* ── 驗證與送出 ── */
+function validate(){
+  let ok = true;
+  const need = [["#f_name", "#i_name", v => v.trim().length > 0],
+                ["#f_phone","#i_phone",v => /^09\d{8}$/.test(v.replace(/[\s-]/g, ""))],
+                ["#f_addr", "#i_addr", v => v.trim().length >= 6]];
+  need.forEach(([f, i, test]) => {
+    const bad = !test($(i).value);
+    $(f).classList.toggle("invalid", bad);
+    if (bad && ok){ $(f).scrollIntoView({behavior:"smooth", block:"center"}); ok = false; }
+    else if (bad) ok = false;
+  });
+  const tax = $("#i_tax").value.trim();
+  const taxBad = tax !== "" && !/^\d{8}$/.test(tax);
+  $("#f_tax").classList.toggle("invalid", taxBad);
+  if (taxBad) ok = false;
+  return ok;
+}
+
+$("#btn").onclick = async () => {
+  if (!chosen().length){
+    $("#plans").scrollIntoView({behavior:"smooth", block:"start"});
+    alertLike("請先選一個訂購方案");
+    return;
+  }
+  if (!validate()) return;
+
+  const btn = $("#btn");
+  btn.disabled = true; btn.textContent = "送出中…";
+
+  const data = {
+    ts   : new Date().toLocaleString("zh-TW", {hour12:false}),
+    event: CFG.event,
+    name : $("#i_name").value.trim(),
+    phone: $("#i_phone").value.replace(/[\s-]/g, ""),
+    addr : $("#i_addr").value.trim(),
+    org  : $("#i_org").value.trim(),
+    tax  : $("#i_tax").value.trim(),
+    line : $("#i_line").value.trim(),
+    when : $("#i_when").value,
+    memo : $("#i_memo").value.trim(),
+    items: chosen().map(p => ({ no:p.no, qty:qtyOf(p), unit:dealPrice(p), sum:dealPrice(p)*qtyOf(p) })),
+    detail: chosen().map(p => p.no + "×" + qtyOf(p) + "組（" + nt(dealPrice(p)*qtyOf(p)) + "）").join("；"),
+    gifts : giftTotals().map(([n,q]) => n + "×" + q).join("；"),
+    listSum: chosen().reduce((a,p) => a + listPrice(p)*qtyOf(p), 0),
+    saved : saved(),
+    total : total()
+  };
+
+  let serial, offline = false;
+  try {
+    serial = await send(data);
+  } catch (e) {
+    offline = true;
+    serial = localCode();
+    try {
+      const q = JSON.parse(localStorage.getItem("charco_order_pending") || "[]");
+      q.push({ ...data, local_code: serial });
+      localStorage.setItem("charco_order_pending", JSON.stringify(q));
+    } catch (err) {}
+  }
+  finish(serial, offline);
+};
+
+async function send(data){
+  if (!GAS_URL) throw new Error("no endpoint");
+  for (let i = 0; i < 2; i++){
+    try {
+      const ctrl = new AbortController();
+      const timer = setTimeout(() => ctrl.abort(), 9000);
+      const res = await fetch(GAS_URL, {
+        method : "POST",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },  // 用 text/plain 避開 CORS 預檢
+        body   : JSON.stringify(data),
+        signal : ctrl.signal
+      });
+      clearTimeout(timer);
+      const out = await res.json();
+      if (out && out.serial) return out.serial;
+      throw new Error("bad response");
+    } catch (e) {
+      if (i === 1) throw e;
+    }
+  }
+}
+
+// 送不出去時的備用編號，業務一樣查得到
+function localCode(){
+  const d = new Date(), p = n => String(n).padStart(2, "0");
+  return "L" + p(d.getMonth()+1) + p(d.getDate()) + "-" + p(d.getHours()) + p(d.getMinutes()) + p(d.getSeconds());
+}
+
+function finish(serial, offline){
+  $("#serial").textContent = serial;
+  $("#stamp").textContent  = new Date().toLocaleString("zh-TW", {hour12:false});
+  $("#off_tag").style.display = offline ? "inline-block" : "none";
+  $("#done").classList.add("show");
+  window.scrollTo(0, 0);
+  document.body.style.overflow = "hidden";
+}
+
+// 不用瀏覽器 alert（會擋住畫面），改用底部提示
+function alertLike(msg){
+  const k = $("#b_k"), old = k.textContent;
+  k.textContent = msg;
+  k.style.color = "#d64545";
+  setTimeout(() => { k.textContent = old; k.style.color = ""; }, 2200);
+}
+
+renderStatic();
+renderPlans();
+update();
+</script>
+</body>
+</html>
