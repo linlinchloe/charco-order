@@ -190,8 +190,9 @@ footer a{color:var(--deep);text-decoration:none}
   .p-head h1{font-size:16pt;margin:1px 0 2px;font-weight:800}
   .p-head .period{font-size:9pt;color:#333}
   .p-head .limit{font-size:8.5pt;color:#c0392b;font-weight:700;margin-top:1px}
-  .p-head .qr{text-align:right;font-size:8pt;color:#555;line-height:1.4;flex:none;max-width:52mm}
-  .p-head .qr b{color:#629626}
+  .p-head .qr{text-align:center;flex:none}
+  .p-head .qr img{width:24mm;height:24mm;display:block;margin:0 auto}
+  .p-head .qr .cap{font-size:7.5pt;color:#555;margin-top:1px;letter-spacing:.04em}
 
   .p-prod{display:flex;gap:6px;margin-bottom:8px}
   .p-prod .c{flex:1;border:.7pt solid #cfd5cc;border-radius:4px;padding:4px 5px;display:flex;gap:6px;align-items:center}
@@ -372,7 +373,8 @@ footer a{color:var(--deep);text-decoration:none}
       <div class="limit" id="p_limit"></div>
     </div>
     <div class="qr">
-      也可以線上下單<br><b id="p_url"></b>
+      <img src="../images/qr_autumn.png" alt="線上下單 QR 碼">
+      <div class="cap">掃碼線上下單</div>
     </div>
   </div>
 
@@ -599,7 +601,7 @@ function renderStatic(){
   $("#p_period").textContent = CFG.period;
   $("#h_limit").textContent = CFG.limit;
   $("#p_limit").textContent = CFG.limit;
-  $("#p_url").textContent = CFG.online;
+  const pu = $("#p_url"); if (pu) pu.textContent = CFG.online;
   document.title = "恰口科研｜" + CFG.title;
 
   $("#s_notes").innerHTML = "<b>訂購說明</b><ul>" + CFG.notes.map(n => "<li>" + n + "</li>").join("") + "</ul>";
